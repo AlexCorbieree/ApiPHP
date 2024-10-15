@@ -1,0 +1,13 @@
+.contenedor{
+    display: grid;
+}
+
+.item{
+    background-color: #000000;
+    border: 1px solid #ff0000;
+    padding: 10px;
+    font-size: 20px;
+    font-family: arial;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}   

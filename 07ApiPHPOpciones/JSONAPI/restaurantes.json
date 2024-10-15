@@ -1,0 +1,44 @@
+[
+    {
+        "ID": 1,
+        "Nombre": "WingsArmy",
+        "Pais_de_origen": "Mexico",
+        "Categorias": {
+            "categoria_1": "Alitas",
+            "categoria_2": "Boneless",
+            "categoria_3": "Hamburguesas"
+        },
+        "Bebidas": {
+            "Alcoholicas": "Cerveza",
+            "No_Alcoholicas": "Refresco"
+        }
+    },
+    {
+        "ID": 2,
+        "Nombre": "La Casa de Toño",
+        "Pais_de_origen": "Mexico",
+        "Categorias": {
+            "categoria_1": "Pozole",
+            "categoria_2": "Tacos",
+            "categoria_3": "Quesadillas"
+        },
+        "Bebidas": {
+            "Alcoholicas": "Cerveza",
+            "No_Alcoholicas": "Agua de Horchata"
+        }
+    },
+    {
+        "ID": 3,
+        "Nombre": "Toks",
+        "Pais_de_origen": "Mexico",
+        "Categorias": {
+            "categoria_1": "Desayunos",
+            "categoria_2": "Comida",
+            "categoria_3": "Postres"
+        },
+        "Bebidas": {
+            "Alcoholicas": "Vino",
+            "No_Alcoholicas": "Café"
+        }
+    }
+]
