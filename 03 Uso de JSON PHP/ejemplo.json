@@ -1,0 +1,16 @@
+[
+    {
+        "ID"            : 1,
+        "Nombre"        : "WingsArmy",
+        "Pais de origen": "Mexico",
+        "Categorias"    : {
+            "categoria 1": "Alitas",
+            "categoria 2": "Boneless",
+            "categoria 3": "Hamburguesas"
+        },
+        "Bebidas":{
+            "Alcoholicas"   : "Cerveza",
+            "No Alcoholicas": "Refresco"
+        }
+    }
+]

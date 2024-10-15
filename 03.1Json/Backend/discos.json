@@ -1,0 +1,25 @@
+{
+  "band": "Pink Floyd",
+  "albums": [
+    {
+      "title": "The Piper at the Gates of Dawn",
+      "release_date": "1967-08-05"
+    },
+    {
+      "title": "The Dark Side of the Moon",
+      "release_date": "1973-03-01"
+    },
+    {
+      "title": "Wish You Were Here",
+      "release_date": "1975-09-12"
+    },
+    {
+      "title": "The Wall",
+      "release_date": "1979-11-30"
+    },
+    {
+      "title": "A Momentary Lapse of Reason",
+      "release_date": "1987-09-07"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+.contenedor{
+    display: grid;
+    height: 98vh;
+    grid-template-areas: "header header"
+                        "sidebar  main"
+                        "footer  footer";
+    grid-template-rows: 80px 1fr 80px;
+    grid-template-columns: 300px 1fr;
+}
+
+header{
+    grid-area: header;
+    background: linear-gradient(300deg, rgb(115, 234, 97) 0%, rgb(244, 255, 30) 100%);
+
+}
+
+sidebar{
+    grid-area: sidebar;
+
+}
+
+main{
+    grid-area: main;
+}
+
+footer{
+    grid-area: footer;
+}
+
+.item {
+    border: 3px solid #ff0000;
+    padding: 1rem;
+    font-family: arial;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    background: linear-gradient(300deg, rgb(115, 234, 97) 0%, rgb(244, 255, 30) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
