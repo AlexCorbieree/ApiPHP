@@ -3,10 +3,10 @@
 
 function getPeliculas($conn){
 
-    $sql = "SELECT * FROM pelicula WHERE estado = 1";
+    $sql    = "SELECT * FROM pelicula WHERE estado = 1";
     $result = $conn->query($sql);
-    $row    = $result->fetch_all();
-    $row    = json_encode($row,UTF8);
+    $row = $result->fetch_all(MYSQLI_ASSOC);
+    $row = json_encode($row,UTF8);
     return $row;
 
 }
