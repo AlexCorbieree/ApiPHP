@@ -39,7 +39,7 @@ function postCanciones($conn){
 function patchCanciones($conn) {
     if ($_SERVER['REQUEST_METHOD'] === 'PATCH') {
         $data = json_decode(file_get_contents("php://input"), true);
-        if (!empty($data['id'])) {
+        if (!empty($data['id'])) {  
             $id = $conn->real_escape_string($data['id']); 
             $fields = [];
             if (!empty($data['nombre'])) {
