@@ -28,62 +28,74 @@ if (isset($data['status']) && $data['status'] == 200) {
 
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Películas</title>
-    <link rel="stylesheet" href="css/estilos.css">
-    <script src="js/funciones.js"></script> 
-</head>
-<body>
-    <div class="container">
-        <h1>Películas</h1>
-        <div id="peliculas-grid" class="grid">
-            <?php if (!empty($peliculas)) : ?>
-                <?php foreach ($peliculas as $pelicula) : ?>
-                    <div class="card">
-                        <img src="<?php echo 'http://localhost/webmoviles/BackEnd/09ApiRest/img/peliculas/' . htmlspecialchars($pelicula['portada']); ?>" 
-                            alt="<?php echo htmlspecialchars($pelicula['nombre']); ?>"
-                            onerror="this.onerror=null;this.src='http://localhost/webmoviles/BackEnd/09ApiRest/img/peliculas/generic.png';">
-                        <h2><?php echo htmlspecialchars($pelicula['nombre']); ?></h2>
-                        <p>Director: <?php echo htmlspecialchars($pelicula['director']); ?></p>
-                        <p>Publicado: <?php echo htmlspecialchars($pelicula['publicado']); ?></p>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Películas</title>
+        <link rel="stylesheet" href="css/estilos.css">
+        <script src="js/funciones.js"></script> 
+    </head>
+    <body>
+        <div class="container">
+            <h1>Películas</h1>
+            <div id="peliculas-grid" class="grid">
+                <?php if (!empty($peliculas)) : ?>
+                    <?php foreach ($peliculas as $pelicula) : ?>
+                        <div class="card">
+                            <img src="<?php echo 'http://localhost/webmoviles/BackEnd/09ApiRest/img/peliculas/' . htmlspecialchars($pelicula['portada']); ?>" 
+                                alt="<?php echo htmlspecialchars($pelicula['nombre']); ?>"
+                                onerror="this.onerror=null;this.src='http://localhost/webmoviles/BackEnd/09ApiRest/img/peliculas/generic.png';">
+                            <h2><?php echo htmlspecialchars($pelicula['nombre']); ?></h2>
+                            <p>Director: <?php echo htmlspecialchars($pelicula['director']); ?></p>
+                            <p>Publicado: <?php echo htmlspecialchars($pelicula['publicado']); ?></p>
 
-                        <button onclick="mostrarFormularioModificar(<?php echo htmlspecialchars(json_encode($pelicula)); ?>)">Modificar</button>
-                        <button onclick="borrarPelicula(<?php echo $pelicula['id']; ?>)">Borrar</button>
-                    </div>
-                <?php endforeach; ?>
-            <?php else : ?>
-                <p>No hay películas disponibles.</p>
-            <?php endif; ?>
+                            <button onclick="mostrarFormularioModificar(<?php echo htmlspecialchars(json_encode($pelicula)); ?>)">Modificar</button>
+                            <button onclick="borrarPelicula(<?php echo $pelicula['id']; ?>)">Borrar</button>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p>No hay películas disponibles.</p>
+                <?php endif; ?>
+            </div>
+
+            <div id="formulario-agregar">
+                <h2>Agregar nueva película</h2>
+                <form id="form-agregar" onsubmit="event.preventDefault(); agregarPelicula();">
+                    <input type="text" id="nombre" placeholder="Nombre de la película" required>
+                    <input type="text" id="director" placeholder="Director" required>
+                    <input type="date" id="publicado" required>
+                    <input type="text" id="portada" placeholder="Portada (nombre de archivo)" required>
+                    <button type="submit">Agregar película</button>
+                </form>
+            </div>
+
+            <div id="formulario-modificar" style="display: none;">
+                <h2>Modificar película</h2>
+                <form id="form-modificar" onsubmit="event.preventDefault(); modificarPelicula();">
+                    <input type="hidden" id="mod-id">
+                    <input type="text" id="mod-nombre" placeholder="Nombre de la película" required>
+                    <input type="text" id="mod-director" placeholder="Director" required>
+                    <input type="date" id="mod-publicado" required>
+                    <input type="text" id="mod-portada" placeholder="Portada (nombre de archivo)" required>
+                    <button type="submit">Modificar película</button>
+                    <button type="button" onclick="cancelarModificacion()">Cancelar</button>
+                </form>
+            </div>
         </div>
-
-        <div id="formulario-agregar">
-            <h2>Agregar nueva película</h2>
-            <form id="form-agregar" onsubmit="event.preventDefault(); agregarPelicula();">
-                <input type="text" id="nombre" placeholder="Nombre de la película" required>
-                <input type="text" id="director" placeholder="Director" required>
-                <input type="date" id="publicado" required>
-                <input type="text" id="portada" placeholder="Portada (nombre de archivo)" required>
-                <button type="submit">Agregar película</button>
-            </form>
+        <div class="container">
+            <table>
+                <tr>
+                    <th> Nombre </th>
+                    <th> Director </th>
+                    <th> Año de publcación </th>
+                    <th> Portada </th>
+                </tr>
+                <tbody id="tablaPeliculas">
+                    <?php    
+                    // $data = curlPHP();
+                    ?>
+                </tbody>
+            </table>
         </div>
-
-        <div id="formulario-modificar" style="display: none;">
-            <h2>Modificar película</h2>
-            <form id="form-modificar" onsubmit="event.preventDefault(); modificarPelicula();">
-                <input type="hidden" id="mod-id">
-                <input type="text" id="mod-nombre" placeholder="Nombre de la película" required>
-                <input type="text" id="mod-director" placeholder="Director" required>
-                <input type="date" id="mod-publicado" required>
-                <input type="text" id="mod-portada" placeholder="Portada (nombre de archivo)" required>
-                <button type="submit">Modificar película</button>
-                <button type="button" onclick="cancelarModificacion()">Cancelar</button>
-            </form>
-        </div>
-
-
-
-    </div>
-</body>
+    </body>
 </html>
