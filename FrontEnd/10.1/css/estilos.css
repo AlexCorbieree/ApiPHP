@@ -14,12 +14,17 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    transition: transform 0.2s ease-in-out;
+
 }
 .card {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     overflow: hidden;
+}
+.card:hover {
+    transform: scale(1.2);
 }
 .card-img {
     width: 100%;

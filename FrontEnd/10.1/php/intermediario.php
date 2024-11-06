@@ -48,8 +48,8 @@ if(isset($data->endpoint)){
       if($respuesta->status==200){
         $datos = json_decode($respuesta->data);
         foreach($datos as $clave){
-          $html.=trim("<div class='card'><img src='img/$clave->portada' alt='Card 1' class='card-img'><div class='card-content'><h3 class='card-title'>$clave->nombre</h3><p class='card-text'>$clave->year</p></div></div>");
-          $html2.=trim("<tr><td>$clave->id</td><td>$clave->nombre</td><td>$clave->year</td><td>$clave->portada</td></tr>");         
+          $html.=trim("<div class='card'><img src='img/$clave->portada' alt='Card 1' class='card-img'><div class='card-content'><h3 class='card-title'>$clave->nombre</h3><p class='card-director'>$clave->director</p><p class='card-text'>$clave->publicado</p></div></div>");
+          $html2.=trim("<tr><td>$clave->id</td><td>$clave->nombre</td><td>$clave->director</td><td>$clave->publicado</td><td>$clave->portada</td></tr>");         
         }
         $response["card"]=trim($html);
         $response["tabla"]=trim($html2);

@@ -4,7 +4,8 @@ async function insertarPeliculas(){
     myHeaders.append("Content-Type", "application/json");
     const raw = JSON.stringify({
         "nombre": "Java Script",
-        "year": "2024",
+        "director": "2024",
+        "publicado": "2024",
         "portada": "javascript.jpg"
     });
     const requestOptions = {
@@ -26,32 +27,69 @@ async function insertarPeliculas(){
     })
     .catch((error) => console.error(error));
 }
-async function obtenerPeliculas(){
+
+
+async function obtenerPeliculas() {
     const myHeaders = new Headers();
     myHeaders.append("Authorization", "123");
     myHeaders.append("Content-Type", "application/json");
+
     const requestOptions = {
-        method: "POST",
+        method: "GET",
         headers: myHeaders,
-        body: JSON.stringify({
-            endpoint: 'getPeliculas',
-            metodo: 'GET'
-        }),
         redirect: "follow"
     };
+
     await fetch("http://localhost/webmoviles/BackEnd/09ApiRest/servicios/peliculas/", requestOptions)
-    .then((response) => response.text())
-    .then((result) => {
-        const datos     = JSON.parse(result)
-        const respuesta = JSON.parse(datos.data)
-        if(datos.status!=200){
-            throw new Error ('Error en la respuesta API')
-        }else{
-            document.getElementById('cardsPeliculas').innerHTML = respuesta.card
-            document.getElementById('tablaPeliculas').innerHTML = respuesta.tabla
-            let table = new DataTable('#myTable', {});
-        }
-    })
-    .catch((error) => console.error(error));
+        .then((response) => response.text())
+        .then((result) => {
+            console.log("Respuesta completa del servidor:", result);
+
+            const datos = JSON.parse(result);
+            console.log("Datos parseados:", datos);
+
+            if (datos.status !== 200) {
+                throw new Error('Error en la respuesta API');
+            } else {
+                const peliculas = JSON.parse(datos.data);
+
+                let cardsHTML = '';
+                let tablaHTML = '';
+                peliculas.forEach((pelicula) => {
+                    cardsHTML += `
+                        <div class="card">
+                            <img src="img/${pelicula.portada}" 
+                                alt="Imagen de la película" 
+                                onerror="this.onerror=null; this.src='img/generic.png';" 
+                                style="width: 220px; height: auto; float:left; margin-right: 20px">
+                            <h3>${pelicula.nombre}</h3>
+                            <p> <strong> Director: </strong> <br> ${pelicula.director}</p> 
+                            <p> <strong> Año: </strong> <br> ${pelicula.publicado}</p> 
+                        </div>`;
+
+                    tablaHTML += `
+                        <tr>
+                            <td>${pelicula.id}</td>
+                            <td>${pelicula.nombre}</td>
+                            <td>${pelicula.publicado}</td>
+                            <td>${pelicula.director}</td>
+                            <td>
+                            <img src="img/${pelicula.portada}" 
+                                alt="Imagen de la película" 
+                                onerror="this.onerror=null; this.src='img/generic.png';" 
+                                style="width: 100px; height: auto; align: center">
+                            </td>
+                        </tr>`;
+                });
+
+                document.getElementById('cardsPeliculas').innerHTML = cardsHTML;
+                document.getElementById('tablaPeliculas').innerHTML = tablaHTML;
+
+                new DataTable('#myTable');
+            }
+        })
+        .catch((error) => console.error(error));
 }
+
+
 obtenerPeliculas();
