@@ -1,7 +1,7 @@
 <?php
 function obtenerCartas($conn, $num){
 	if ($num) {
-		$sql        =   "SELECT * FROM cartas
+		$sql        =   "SELECT * FROM loteria
 						ORDER BY RAND()
 						LIMIT $num";
 		$result     =   $conn->query($sql);
@@ -9,7 +9,7 @@ function obtenerCartas($conn, $num){
 		$row        =  json_encode($row,UTF8);
 		return $row;
 	} else {
-		$sql        =   "SELECT * FROM cartas
+		$sql        =   "SELECT * FROM loteria
 						ORDER BY RAND()";
 		$result     =   $conn->query($sql);
 		$row        =   $result->fetch_all(MYSQLI_ASSOC);
@@ -17,7 +17,7 @@ function obtenerCartas($conn, $num){
 	}
 }
 function ObtenerCartaPorId($conn, $id){
-	$sql        =   "SELECT * FROM cartas WHERE id=$id";
+	$sql        =   "SELECT * FROM loteria WHERE id=$id";
 	$result     =   $conn->query($sql);
 	$row        =   $result->fetch_all(MYSQLI_ASSOC);
 	$row        =  json_encode($row,UTF8);
