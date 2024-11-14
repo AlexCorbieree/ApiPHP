@@ -18,7 +18,7 @@
     <div class="controlsPlay">
         <label for="cardCount">Cantidad de cartas: (Dejar vacío para retornar todas las cartas)</label>
         <input type="number" id="cardCount" min="1" placeholder="Ej. 16">
-        <button id="getCards">Obtener Cartas</button>
+        <button id="getCards">Cantar Loteria</button>
     </div>
 
     <div class="main-container">

@@ -139,7 +139,7 @@ async function getCards() {
 
                         currentIndex++;
 
-                        setTimeout(displayNextCard, 7000); 
+                        setTimeout(displayNextCard, 5000); 
                     }
                 }
 
