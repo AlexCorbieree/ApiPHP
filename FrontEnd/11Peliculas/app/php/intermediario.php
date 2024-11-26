@@ -11,8 +11,6 @@ define("UTF8",JSON_UNESCAPED_UNICODE);
 session_start();
 
 function curlPHP($url,$metodo,$datos,$auth){
-  echo $url;
-  exit();
   $curl = curl_init();
   curl_setopt_array($curl, array(
     CURLOPT_URL => $url,
@@ -30,12 +28,15 @@ function curlPHP($url,$metodo,$datos,$auth){
     ),
   ));
   $response = curl_exec($curl);
-  curl_close($curl);
-  return $response;
+  curl_close($curl);  
+  
+  return $url;
 }
 
 
 $data = json_decode(file_get_contents("php://input"));
+// print_r($data);
+// exit();
 
 if(isset($_SESSION["llave_peticion"])){
 	echo '{"status":"ok"}';
