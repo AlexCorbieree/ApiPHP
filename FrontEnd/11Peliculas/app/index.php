@@ -2,6 +2,15 @@
 <!doctype html>
 <html lang="es" data-bs-theme="auto">
 	<head>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-2K2DWZVS27"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-2K2DWZVS27');
+		</script>
+
 		<title> Películas 2024</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
