@@ -66,7 +66,7 @@ if (isset($_SESSION["llave_peticion"])) {
 
                         if ($esAdmin) {
                             $html .= "
-                                        <button type='button' class='btn btn-sm btn-outline-secondary editar' data-id='{$perfil[0]}'>Editar</button>
+                                        <button type='button' class='btn btn-sm btn-outline-warning editar' data-id='{$perfil[0]}'>Editar</button>
                                         <button type='button' class='btn btn-sm btn-outline-danger eliminar' data-id='{$perfil[0]}'>Eliminar</button>";
                         }
                         $html .= "
@@ -124,6 +124,22 @@ if (isset($_SESSION["llave_peticion"])) {
                     echo json_encode($array, JSON_UNESCAPED_UNICODE);
                 }
         
+                die();
+            }
+        }
+        
+        if ($data->endpoint == "crearPerfil") {
+            if ($data->metodo == "POST") { 
+                $url = 'http://localhost/webmoviles/Proyecto/api/servicios/perfiles/';
+                $metodo = "POST";  
+                $datos = json_encode($data->datos);  
+                // print __LINE__;
+                // exit();
+                
+                $auth = isset($_SESSION['key']) ? $_SESSION['key'] : "123"; 
+                $respuesta = curlPHP($url, $metodo, $datos, $auth);  
+                
+                echo $respuesta; 
                 die();
             }
         }

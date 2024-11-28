@@ -8,10 +8,10 @@
         return $row;
         
     }
-    function insertarPerfil($conn, $nombre, $puesto, $edad, $educacion, $locacion, $foto, $biografia, $metas, $motivaciones, $preocupaciones){
+    function crearPerfil($conn, $nombre, $puesto, $edad, $educacion, $locacion, $foto, $biografia, $metas, $motivaciones, $preocupaciones){
         $stmt = $conn->prepare("INSERT INTO perfiles (nombre_perf, puesto, edad, educacion,locacion,foto,biografia,metas,motivaciones,preocupaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssisssssss", $nombre, $puesto, $edad, $educacion, $locacion, $foto, $biografia, $metas, $motivaciones, $preocupaciones);  // "sis" significa string, integer, string
-        
+
         if ($stmt->execute()) {    
             $respuesta = array(
                 'nombre' => $nombre,

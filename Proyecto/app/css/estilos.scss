@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
+    background-color: #ebebeb !important;
 }
 
 .navbar {
@@ -14,7 +14,7 @@ body {
 }
 
 .album {
-    background-color: #fff;
+    background-color: #d8d8d8 !important;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -23,7 +23,7 @@ body {
     border: none;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 6px rgba(99, 99, 99, 0.1);
     transition: transform 0.2s ease;
 }
 
@@ -34,13 +34,13 @@ body {
 .card-img-top {
     height: 200px;
     object-fit: cover;
-    background-color: gray;
+    background-color: rgb(192, 192, 192);
 }
 
 .card-body {
     padding: 15px;
     color: white;
-    background-color: #202020;
+    background-color: #696969;
 }
 
 .btn-outline-light {
@@ -73,6 +73,11 @@ body {
 
 #loginLink {
     display: flex;  
+}
+
+#crearPerfil {
+    display: flex;
+    color: green($color: #000000);
 }
 
 footer {

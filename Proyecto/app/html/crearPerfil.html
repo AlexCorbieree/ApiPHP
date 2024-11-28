@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es" data-bs-theme="auto">
+<head>
+    <title>Crear Perfil</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crear un nuevo perfil">
+    <link rel="stylesheet" href="../assets/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/estilos.scss">
+    <script defer src="../js/funciones.js"></script>
+</head>
+<body>
+    <header data-bs-theme="dark">
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">  
+                <a href="index.html" class="navbar-brand d-flex align-items-center">
+                    <i class="fa-solid fa-user"></i>
+                    <strong>Perfiles CMS</strong>
+                </a>
+                <div id="user-container" style="display: none;">
+                    <span id="user-name"></span>
+                    <button id="logoutBtn" class="btn btn-outline-danger btn-sm">Cerrar sesión</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <h1 class="text-center">Crear Perfil</h1>
+        <form id="formCrearPerfil" class="bg-light p-4 rounded shadow-sm">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="puesto" class="form-label">Puesto</label>
+                <input type="text" class="form-control" id="puesto" name="puesto" required>
+            </div>
+            <div class="mb-3">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="number" class="form-control" id="edad" name="edad" required>
+            </div>
+            <div class="mb-3">
+                <label for="educacion" class="form-label">Educación</label>
+                <input type="text" class="form-control" id="educacion" name="educacion" required>
+            </div>
+            <div class="mb-3">
+                <label for="locacion" class="form-label">Locación</label>
+                <input type="text" class="form-control" id="locacion" name="locacion" required>
+            </div>
+            <div class="mb-3">
+                <label for="foto" class="form-label">URL de Foto</label>
+                <input type="text" class="form-control" id="foto" name="foto" required>
+            </div>
+            <div class="mb-3">
+                <label for="biografia" class="form-label">Biografía</label>
+                <textarea class="form-control" id="biografia" name="biografia" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="metas" class="form-label">Metas</label>
+                <textarea class="form-control" id="metas" name="metas" rows="2" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="motivaciones" class="form-label">Motivaciones</label>
+                <textarea class="form-control" id="motivaciones" name="motivaciones" rows="2" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="preocupaciones" class="form-label">Preocupaciones</label>
+                <textarea class="form-control" id="preocupaciones" name="preocupaciones" rows="2" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Crear Perfil</button>
+        </form>
+    </main>
+
+    <footer class="text-muted py-4 text-center">
+        <div class="container">
+            <p class="mb-1">Sistema CMS desarrollado por Alejandro Alonso Corbiere</p>
+            <p class="mb-0">Proyecto final de desarrollo de aplicaciones web móviles</p>
+        </div>
+    </footer>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
