@@ -1,7 +1,7 @@
 <?php
     function obtenerPerfiles($conn){
         
-        $sql        = "SELECT * FROM perfiles";
+        $sql        = "SELECT * FROM perfiles where estado = 1";
         $result     =   $conn->query($sql);
         $row        =   $result->fetch_all();
         $row        =  json_encode($row,UTF8);
@@ -28,11 +28,9 @@
             );
             return json_encode($respuesta,UTF8);
         } else {
-            // Error en la ejecución
             echo "Error: ".$stmt->error;
         }
 
-        // Cerrar el statement
         $stmt->close();
 
     }
@@ -62,3 +60,36 @@
         $stmt->close();
         
     }
+
+    function eliminarPerfil($conn) {
+        if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+            $data = json_decode(file_get_contents("php://input"), true);
+            
+            if (!empty($data['id'])) {
+                $id = $conn->real_escape_string($data['id']); 
+                
+                $sql = "UPDATE perfiles SET estado = 0 WHERE id = $id";
+                
+                if ($conn->query($sql) === TRUE) {
+                    $array = array();
+                    $array['status'] = 200;
+                    $array['error'] = false;
+                    $array['data'] = "Perfil eliminado correctamente";
+                    return json_encode($array);  
+                } else {
+                    $array = array();
+                    $array['status'] = 400;
+                    $array['error'] = true;
+                    $array['data'] = "Error al eliminar perfil";
+                    return json_encode($array);  
+                }
+            } else {
+                $array = array();
+                $array['status'] = 400;
+                $array['error'] = true;
+                $array['data'] = "ID del perfil no proporcionado.";
+                return json_encode($array);  
+            }
+        }
+    }
+    

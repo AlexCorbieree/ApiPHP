@@ -5,8 +5,8 @@ $datos      = "perfiles/perfiles.php";
 
 $conexion = array(
     "servername" => "localhost",
-    "username"   => "Luis",
-    "password"   => "peliculas",
+    "username"   => "root",
+    "password"   => "",
     "dbname"     => "proyecto"
 );
 $datos = 'perfiles/perfiles.php';
