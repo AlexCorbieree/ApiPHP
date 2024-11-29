@@ -133,9 +133,6 @@ if (isset($_SESSION["llave_peticion"])) {
                 $url = 'http://localhost/webmoviles/Proyecto/api/servicios/perfiles/';
                 $metodo = "POST";  
                 $datos = json_encode($data->datos);  
-                // print __LINE__;
-                // exit();
-                
                 $auth = isset($_SESSION['key']) ? $_SESSION['key'] : "123"; 
                 $respuesta = curlPHP($url, $metodo, $datos, $auth);  
                 

@@ -138,13 +138,11 @@ async function eliminarPerfil(id) {
 document.getElementById("formCrearPerfil")?.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    // Crear headers
     const myHeaders = new Headers();
     const key = localStorage.getItem("key");
     myHeaders.append("Authorization", key || "123");
     myHeaders.append("Content-Type", "application/json");
 
-    // Obtener datos del formulario
     const nombre = document.getElementById("nombre").value;
     const puesto = document.getElementById("puesto").value;
     const edad = document.getElementById("edad").value;
@@ -156,7 +154,6 @@ document.getElementById("formCrearPerfil")?.addEventListener("submit", async fun
     const motivaciones = document.getElementById("motivaciones").value;
     const preocupaciones = document.getElementById("preocupaciones").value;
 
-    // Construir objeto de datos
     const datos = {
         endpoint: "crearPerfil",
         metodo: "POST",
@@ -175,29 +172,26 @@ document.getElementById("formCrearPerfil")?.addEventListener("submit", async fun
         },
     };
 
-    // Crear opciones de la solicitud
     const requestOptions = {
         method: "POST",
         headers: myHeaders,
-        body: JSON.stringify(datos), // Incluir datos en el cuerpo de la solicitud
+        body: JSON.stringify(datos), 
         redirect: "follow",
     };
 
     console.log("Enviando datos:", datos);
 
     try {
-        // Realizar la solicitud al servidor
         const response = await fetch("http://localhost/webmoviles/Proyecto/app/php/intermediario.php", requestOptions);
 
-        const resultado = await response.json(); // Parsear respuesta JSON
+        const resultado = await response.json(); 
         console.log("Respuesta del servidor:", resultado);
         console.log("response del servidor:", response);
 
 
-        // Verificar estado de la respuesta
         if (resultado.status === 200) {
             alert("Perfil creado correctamente");
-            window.location.href = "index.html"; // Redirigir a index
+            window.location.href = "index.html"; 
         } else {
             alert("Error al crear el perfil: " + resultado.message);
         }
