@@ -1,7 +1,6 @@
 <?php
-	// Verificar el origen de la petición
 	if (isset($_SERVER['HTTP_ORIGIN'])) {
-		$allowedOrigins = ['http://localhost']; // Lista de dominios permitidos
+		$allowedOrigins = ['http://localhost'];
 		if (!in_array($_SERVER['HTTP_ORIGIN'], $allowedOrigins)) {
 			die('Origen no permitido');
 		}
